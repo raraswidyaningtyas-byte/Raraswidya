@@ -39,7 +39,7 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="index.php" class="logo d-flex align-items-center">
         <img src="assets/img/logo.png" alt="">
         <span class="d-none d-lg-block">RARAS</span>
       </a>
@@ -264,7 +264,7 @@
 
     <!-- Kategori Produk -->
     <li class="nav-item">
-      <a class="nav-link <?= ($page == 'kategori produk.php') ? '' : 'collapsed' ?>" href="kategori produk.php">
+      <a class="nav-link <?= ($page == 'kategori_produk.php') ? '' : 'collapsed' ?>" href="kategori_produk.php">
         <i class="bi bi-tags"></i>
         <span>Kategori Produk</span>
       </a>
@@ -304,7 +304,7 @@
       <h1>laporan</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+          <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
           <li class="breadcrumb-item active">laporan</li>
         </ol>
       </nav>
