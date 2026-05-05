@@ -262,7 +262,7 @@
     <!-- Dashboard -->
     <li class="nav-item">
       <a class="nav-link <?= ($page == 'index.php') ? '' : 'collapsed' ?>" href="index.php">
-        <i class="bi bi-speedometer2"></i>
+       <i class="bi bi-house-heart-fill"></i>
         <span>Dashboard</span>
       </a>
     </li>
