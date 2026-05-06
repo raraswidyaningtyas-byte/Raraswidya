@@ -1,4 +1,31 @@
-<?php $page = basename($_SERVER['PHP_SELF']); ?>
+<?php
+include "koneksi.php";
+
+$auto = mysqli_query($conn, "select max(kd_kat) as max_code from categories");
+$hasil = mysqli_fetch_array($auto);
+$code = $hasil['max_code'];
+if ($code == NULL) {
+    $urutan = 0;
+} else {
+    $urutan = (int) substr($code, 1, 3);
+}
+$urutan++;
+$huruf = "K";
+$kd_kat = $huruf . sprintf("%03s", $urutan);
+
+if (isset($_POST['simpan'])) {
+    $nm_kat = $_POST['nm_kat'];
+
+    $query = mysqli_query($conn, "INSERT INTO categories(kd_kat, category_name) VALUES ('$kd_kat', '$nm_kat')");
+    if ($query) {
+        echo "<script>alert('Data berhasil ditambahkan!')</script>";
+        header("refresh:0, kategori_produk.php");
+    } else {
+        echo "<script>alert('Data gagal ditambahkan!')</script>";
+        header("refresh:0, kategori_produk.php");
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +33,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Kategori Produk - RARAS</title>
+  <title>Kategori_Produk - RARASWIDYA</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -30,7 +57,7 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
-
+  
 </head>
 
 <body>
@@ -39,25 +66,26 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="index.php" class="logo d-flex align-items-center">
+      <a href="index.html" class="logo d-flex align-items-center">
         <img src="assets/img/logo.png" alt="">
-        <span class="d-none d-lg-block">RARAS</span>
+        <span class="d-none d-lg-block">NiceAdmin</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
 
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
+
+
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>RARAS</h6>
+              <h6>Kevin Anderson</h6>
               <span>Web Designer</span>
             </li>
             <li>
@@ -160,66 +188,41 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Kategori produk</h1>
+      <h1>Kategori Produk</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
-
-          <li class="breadcrumb-item active">Kategori produk</li>
+          <li class="breadcrumb-item">Kategori Produk</li>
+          <li class="breadcrumb-item active">Tambah</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
-    <div class="row">
-      <div class="col-lg-12">
-
-        <div class="card">
-          <div class="card-body mt-3">
-            <a href="t_kat.php" class=" btn btn-primary">Tambah Data</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <section class="section">
       <div class="row">
-        <div class="col-lg-12">
 
-          <div class="card-body mt-3">
+        <div class="col-lg-6">
+
+          <div class="card">
             <div class="card-body">
+              <h5 class="card-title">Tambah Kategori Produk</h5>
 
-              <!-- Table with stripped rows -->
-              <table class="table datatable">
-                <thead>
-                  <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">Kode Kategori</th>
-                    <th scope="col">Kategori Produk</th>
-                    <th scope="col">Aksi</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php
-                  include "koneksi.php";
-                  $no = 1;
-                  $sql = mysqli_query($conn, "SELECT * FROM categories");
-                  while ($data = mysqli_fetch_array($sql)) {
-                  ?>
-                    <tr>
-                      <td><?php echo $no++; ?></td>
-                      <td><?php echo $data['kd_kat']; ?></td>
-                      <td><?php echo $data['category_name']; ?></td>
-                      <td>
-                        <a href="e_kat.php?id=<?php echo $data['id']; ?>" class="btn btn-warning">Edit</a>
-                        <a href="h_kat.php?id=<?php echo $data['id']; ?>" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data?')">Hapus</a>
-                      </td>
-                    </tr>
-                  <?php } ?>
-                </tbody>
-
-
-                </tbody>
-              </table>
-              <!-- End Table with stripped rows -->
+              <!-- Vertical Form -->
+              <form class="row g-3">
+                <div class="col-12">
+                  <label for="kd_kat" class="form-label">Kode Kategori</label>
+                  <input type="text" class="form-control" id="kd_kat" name="kd_kat"value="<?php echo $kd_kat; ?>" readonly>
+                </div>
+                <div class="col-12">
+                  <label for="nm_kat" class="form-label">Nama Kategori</label>
+                  <input type="text" class="form-control" id="kd_kat" name="nm_kat" required>
+                </div>
+                
+                <div class="text-center">
+                  <button type="button" class="btn btn-primary"><a href="Kategori_Produk.php" style="color: black; text -decoration:none;">Kembali</a></button>
+                  <button type="reset" class="btn btn-secondary">Reset</button>
+                  <button type="submit" class="btn btn-success" name="simpan">Simpan
+                </div>
+              </form><!-- Vertical Form -->
 
             </div>
           </div>
