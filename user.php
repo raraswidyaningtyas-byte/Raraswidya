@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>users - RARAS</title>
+  <title>user - RARAS</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -145,7 +145,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+              <a class="dropdown-item d-flex align-items-center" href="user-profile.html">
                 <i class="bi bi-person"></i>
                 <span>My Profile</span>
               </a>
@@ -155,7 +155,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+              <a class="dropdown-item d-flex align-items-center" href="user-profile.html">
                 <i class="bi bi-gear"></i>
                 <span>Account Settings</span>
               </a>
@@ -211,7 +211,7 @@
 
     <!-- Data Produk -->
     <li class="nav-item">
-      <a class="nav-link <?= ($page == 'data_produk.php') ? '' : 'collapsed' ?>" href="data_produk.php">
+      <a class="nav-link <?= ($page == 'produk.php') ? '' : 'collapsed' ?>" href="produk.php">
         <i class="bi bi-box"></i>
         <span>Data Produk</span>
       </a>
@@ -229,7 +229,7 @@
     <li class="nav-item">
       <a class="nav-link <?= ($page == 'user.php') ? '' : 'collapsed' ?>" href="user.php">
         <i class="bi bi-people"></i>
-        <span>Manajemen User</span>
+        <span>Manajemen user</span>
       </a>
     </li>
 
@@ -240,11 +240,11 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Manajeman User</h1>
+      <h1>Manajeman user</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
-          <li class="breadcrumb-item active">Manajeman User</li>
+          <li class="breadcrumb-item active">Manajeman user</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
