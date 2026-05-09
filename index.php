@@ -152,7 +152,7 @@
 
     <!-- Manajemen User -->
     <li class="nav-item">
-      <a class="nav-link <?= ($page == 'user.php') ? '' : 'collapsed' ?>" href="user.php">
+      <a class="nav-link <?= ($page == 'user.php') ? '' : 'collapsed' ?>" href="users.php">
         <i class="bi bi-person-rolodex"></i>
         <span>Manajemen User</span>
       </a>
