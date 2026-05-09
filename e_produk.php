@@ -41,9 +41,9 @@ if (isset($_POST['update'])) {
             category_id = '$id_kategori',
             product_name = '$nm_produk',
             stock = '$stok',
-            min_stock = '$min_stok'
-            price = '$harga',
-            WHERE id = 'id'
+            min_stock = '$min_stok',
+            price = '$harga'
+            WHERE id = '$id'
             ");
     }
     if ($update) {
@@ -291,7 +291,7 @@ if (isset($_POST['update'])) {
             &copy; Copyright <strong><span>Nama Sistem</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
-            Designed by <a href="#">NadiaViantika</a>
+            Designed by <a href="#">RARAS</a>
         </div>
     </footer><!-- End Footer -->
 
