@@ -107,7 +107,7 @@
   </header><!-- End Header -->
 
   <!-- ======= Sidebar ======= -->
-   <aside id="sidebar" class="sidebar">
+  <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
@@ -159,6 +159,16 @@
         </ol>
       </nav>
     </div><!-- End Page Title -->
+    <div class="row">
+      <div class="col-lg-12">
+
+        <div clas="card">
+          <div class="card-body mt-3">
+            <a href="t_user.php" class="btn btn-primary">Tambah Data </a>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <section class="section">
       <div class="row">
@@ -166,7 +176,7 @@
 
           <div class="card">
             <div class="card-body">
-              
+
               <!-- Table with stripped rows -->
               <table class="table datatable">
                 <thead>
@@ -181,21 +191,21 @@
                   </tr>
                 </thead>
                 <tbody>
-                <?php
-                include "koneksi.php";
-                $no = 1;
-                $sql = mysqli_query($conn, "SELECT * FROM users");
-                while ($data = mysqli_fetch_array($sql)) {
+                  <?php
+                  include "koneksi.php";
+                  $no = 1;
+                  $sql = mysqli_query($conn, "SELECT * FROM users");
+                  while ($data = mysqli_fetch_array($sql)) {
                   ?>
-                  <tr>
-                    <td><?php echo $no++; ?></td>
-                    <td><?php echo $data['name']; ?></td>
-                    <td><?php echo $data['email']; ?></td>
-                    <td><?php echo ucfirst($data['role']); ?></td>
+                    <tr>
+                      <td><?php echo $no++; ?></td>
+                      <td><?php echo $data['name']; ?></td>
+                      <td><?php echo $data['email']; ?></td>
+                      <td><?php echo ucfirst($data['role']); ?></td>
 
-                    <td>
-                      <?php
-                      if ($data['is_active'] == 1) {
+                      <td>
+                        <?php
+                        if ($data['is_active'] == 1) {
                           echo '<span class="badge bg-success">Aktif</span>';
                         } else {
                           echo '<span class="badge bg-danger">Nonaktif</span>';
@@ -206,15 +216,15 @@
                       <td><?php echo date('d-m-Y H:i', strtotime($data['created_at'])); ?></td>
 
                       <td>
-                      <a href="e_user.php?id=<?php echo $data['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                      <a href="h_user.php?id=<?php echo $data['id']; ?>"
-                      class="btn btn-danger btn-sm"
-                      onclick="return confirm('Apakah Anda yakin ingin menghapus user ini?')">Hapus</a>
+                        <a href="e_user.php?id=<?php echo $data['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="h_user.php?id=<?php echo $data['id']; ?>"
+                          class="btn btn-danger btn-sm"
+                          onclick="return confirm('Apakah Anda yakin ingin menghapus user ini?')">Hapus</a>
                       </td>
-                      </tr>
-                      <?php } ?>
-                      </tbody>
-                      
+                    </tr>
+                  <?php } ?>
+                </tbody>
+
                 </tbody>
               </table>
               <!-- End Table with stripped rows -->
