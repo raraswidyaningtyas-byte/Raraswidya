@@ -190,7 +190,7 @@ if (isset($_POST['submit'])) {
       </li><!-- End Laporan Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="user.php">
+        <a class="nav-link collapsed" href="users.php">
           <i class="bi bi-person-bounding-box"></i>
           <span>Manajemen User</span>
         </a>
