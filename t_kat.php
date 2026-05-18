@@ -149,14 +149,14 @@ if (isset($_POST['simpan'])) {
             </li><!-- End Dashboard Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="kategori_produk.php">
+                <a class="nav-link " href="kategori_produk.php">
                     <i class="bi bi-tags"></i>
                     <span>Kategori Produk</span>
                 </a>
             </li><!-- End Profile Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link" href="produk.php">
+                <a class="nav-link collapsed" href="produk.php">
                     <i class="bi bi-box"></i>
                     <span>Data Produk</span>
                 </a>
