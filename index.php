@@ -262,193 +262,188 @@ function waktu_lalu(string $datetime)
         <section class="section dashboard">
             <div class="row">
 
-                <!-- LEFT SIDE -->
-                <div class="col-lg-8">
-                    <div class="row">
+                <!-- Left side columns -->
+        <div class="col-lg-8">
+          <div class="row">
 
-                        <!-- TOTAL PRODUK -->
-                        <div class="col-xxl-4 col-md-6">
-                            <div class="card info-card">
+            <!-- TOTAL PRODUK -->
+            <div class="col-xxl-4 col-md-6">
+              <div class="card info-card">
+                <div class="card-body">
+                  <h5 class="card-title">Produk <span>| Total</span></h5>
 
-                                <div class="card-body">
-                                    <h5 class="card-title">Produk <span>| Total</span></h5>
-
-                                    <div class="d-flex align-items-center">
-                                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-box"></i>
-                                        </div>
-                                        <div class="ps-3">
-                                            <h6><?= $data_produk['total_produk']; ?></h6>
-                                            <span class="text-muted small pt-2 ps-1">Total Produk</span>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- TOTAL STOK -->
-                        <div class="col-xxl-4 col-md-6">
-                            <div class="card info-card">
-
-                                <div class="card-body">
-                                    <h5 class="card-title">Stok <span>| Total</span></h5>
-
-                                    <div class="d-flex align-items-center">
-                                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-archive"></i>
-                                        </div>
-                                        <div class="ps-3">
-                                            <h6><?= $data_stok['total_stok'] ?? 0; ?></h6>
-                                            <span class="text-muted small pt-2 ps-1">Jumlah Semua Stok</span>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- KATEGORI -->
-                        <div class="col-xxl-4 col-md-12">
-                            <div class="card info-card">
-
-                                <div class="card-body">
-                                    <h5 class="card-title">Kategori <span>| Total</span></h5>
-
-                                    <div class="d-flex align-items-center">
-                                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-tags"></i>
-                                        </div>
-                                        <div class="ps-3">
-                                            <h6><?= $data_kategori['total_kategori']; ?></h6>
-                                            <span class="text-muted small pt-2 ps-1">Total Kategori</span>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- REPORT / GRAFIK -->
-                        <div class="col-12">
-                            <div class="card">
-
-                                <div class="filter">
-                                    <a class="icon" href="#" data-bs-toggle="dropdown">
-                                        <i class="bi bi-three-dots"></i>
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                        <li class="dropdown-header text-start">
-                                            <h6>Filter</h6>
-                                        </li>
-                                        <li><a class="dropdown-item" href="#">Hari Ini</a></li>
-                                        <li><a class="dropdown-item" href="#">Bulan Ini</a></li>
-                                        <li><a class="dropdown-item" href="#">Tahun Ini</a></li>
-                                    </ul>
-                                </div>
-
-                                <div class="card-body">
-                                    <h5 class="card-title">Laporan Barang <span>| Bulan Ini</span></h5>
-
-                                    <div id="reportsChart"></div>
-
-                                    <script>
-                                        document.addEventListener("DOMContentLoaded", () => {
-
-                                            const dataMasuk = <?= json_encode(array_values($masuk)); ?>;
-                                            const dataKeluar = <?= json_encode(array_values($keluar)); ?>;
-
-                                            new ApexCharts(document.querySelector("#reportsChart"), {
-                                                series: [{
-                                                        name: 'Barang Masuk',
-                                                        data: dataMasuk
-                                                    },
-                                                    {
-                                                        name: 'Barang Keluar',
-                                                        data: dataKeluar
-                                                    }
-                                                ],
-                                                chart: {
-                                                    height: 350,
-                                                    type: 'area',
-                                                    toolbar: {
-                                                        show: false
-                                                    }
-                                                },
-                                                markers: {
-                                                    size: 4
-                                                },
-                                                colors: ['#4154f1', '#ff771d'],
-                                                fill: {
-                                                    type: "gradient",
-                                                    gradient: {
-                                                        shadeIntensity: 1,
-                                                        opacityFrom: 0.3,
-                                                        opacityTo: 0.4,
-                                                        stops: [0, 90, 100]
-                                                    }
-                                                },
-                                                dataLabels: {
-                                                    enabled: false
-                                                },
-                                                stroke: {
-                                                    curve: 'smooth',
-                                                    width: 2
-                                                },
-                                                xaxis: {
-                                                    categories: [...Array(31).keys()].map(i => i + 1) // tanggal 1–31
-                                                },
-                                                tooltip: {
-                                                    x: {
-                                                        format: 'dd/MM/yy'
-                                                    },
-                                                }
-                                            }).render();
-                                        });
-                                    </script>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- PRODUK TERBARU -->
-                        <div class="col-12">
-                            <div class="card recent-sales overflow-auto">
-
-                                <div class="card-body">
-                                    <h5 class="card-title">Produk Terbaru <span>| Latest</span></h5>
-
-                                    <table class="table table-borderless datatable">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Produk</th>
-                                                <th>Kategori</th>
-                                                <th>Stok</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            $no = 1;
-                                            while ($row = mysqli_fetch_assoc($query)) :
-                                            ?>
-                                                <tr>
-                                                    <th><?= $no++; ?></th>
-                                                    <td><?= $row['product_name']; ?></td>
-                                                    <td><?= $row['category_name']; ?></td>
-                                                    <td><?= $row['stock']; ?></td>
-                                                </tr>
-                                            <?php endwhile; ?>
-                                        </tbody>
-                                    </table>
-
-                                </div>
-
-                            </div>
-                        </div>
-
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-box"></i>
                     </div>
+                    <div class="ps-3">
+                      <h6><?= $data_produk['total_produk']; ?></h6>
+                      <span class="text-muted small pt-2 ps-1">Total Produk</span>
+                    </div>
+                  </div>
+
                 </div>
+              </div>
+            </div>
+
+            <!-- TOTAL STOK -->
+            <div class="col-xxl-4 col-md-6">
+              <div class="card info-card">
+                <div class="card-body">
+                  <h5 class="card-title">Stok <span>| Total</span></h5>
+
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-stack"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6><?= $data_stok['total_stok'] ?? 0; ?></h6>
+                      <span class="text-muted small pt-2 ps-1">Total Stok</span>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- TOTAL KATEGORI -->
+            <div class="col-xxl-4 col-md-6">
+              <div class="card info-card">
+                <div class="card-body">
+                  <h5 class="card-title">Kategori <span>| Total</span></h5>
+
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-tags"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6><?= $data_kategori['total_kategori'] ?? 0; ?></h6>
+                      <span class="text-muted small pt-2 ps-1">Total Kategori</span>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- REPORT / GRAFIK -->
+            <div class="col-12">
+              <div class="card">
+
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+
+                    <li><a class="dropdown-item" href="#">Hari Ini</a></li>
+                    <li><a class="dropdown-item" href="#">Bulan Ini</a></li>
+                    <li><a class="dropdown-item" href="#">Tahun Ini</a></li>
+                  </ul>
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">Laporan Barang <span>| Bulan Ini</span></h5>
+
+                  <div id="reportsChart"></div>
+
+                  <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+
+                      const dataMasuk = <?= json_encode(array_values($masuk)); ?>;
+                      const dataKeluar = <?= json_encode(array_values($keluar)); ?>;
+
+                      new ApexCharts(document.querySelector("#reportsChart"), {
+                        series: [{
+                            name: "Barang Masuk",
+                            data: dataMasuk
+                          },
+                          {
+                            name: "Barang Keluar",
+                            data: dataKeluar
+                          }
+                        ],
+                        chart: {
+                          height: 350,
+                          type: 'area',
+                          toolbar: {
+                            show: false
+                          }
+                        },
+                        markers: {
+                          size: 4
+                        },
+                        colors: ['#4154f1', '#ff771d'],
+                        fill: {
+                          type: "gradient",
+                          gradient: {
+                            shadeIntensity: 1,
+                            opacityFrom: 0.3,
+                            opacityTo: 0.4,
+                            stops: [0, 90, 100]
+                          }
+                        },
+                        dataLabels: {
+                          enabled: false
+                        },
+                        stroke: {
+                          curve: 'smooth',
+                          width: 2
+                        },
+                        xaxis: {
+                          categories: [...Array(31).keys()].map(i => i + 1)
+                        },
+                        tooltip: {
+                          x: {
+                            format: 'dd/MM/yy'
+                          },
+                        }
+                      }).render();
+
+                    });
+                  </script>
+                </div>
+              </div>
+            </div>
+
+            <!-- PRODUK TERBARU -->
+            <div class="col-12">
+              <div class="card recent-sales">
+
+                <div class="card-body">
+                  <h5 class="card-title">Produk Terbaru <span>| Latest</span></h5>
+
+                  <table class="table table-borderless datatable">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Produk</th>
+                        <th scope="col">Kategori</th>
+                        <th scope="col">Stok</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php $no = 1;
+                      while ($row = mysqli_fetch_assoc($query)) :
+                      ?>
+                        <tr>
+                          <th><?= $no++; ?></th>
+                          <td><?= $row['product_name']; ?></td>
+                          <td><?= $row['category_name']; ?></td>
+                          <td><?= $row['stock']; ?></td>
+                        </tr>
+                      <?php endwhile; ?>
+                    </tbody>
+                  </table>
+
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div><!-- End Left side columns -->
 
                 <!-- RIGHT SIDE -->
                 <div class="col-lg-4">
