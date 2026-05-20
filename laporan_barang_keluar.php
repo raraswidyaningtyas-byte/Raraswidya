@@ -1,11 +1,21 @@
 <?php
+session_start();
+include "koneksi.php";
+
+// Cek apakah user sudah login
+if (!isset($_SESSION['login'])) {
+    header("Location: login.php");
+    exit;
+}
+?>
+<?php
 // Require composer autoload
 require_once __DIR__ . '/vendor/autoload.php';
 
 // Koneksi database
 require_once('koneksi.php');
 
-function query($query)
+function query(string $query)
 {
     global $conn;
     $result = mysqli_query($conn, $query);
