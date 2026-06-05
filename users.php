@@ -162,7 +162,7 @@ if (!isset($_SESSION['login'])) {
     <div class="row">
       <div class="col-lg-12">
 
-        <div clas="card">
+        <div class="card">
           <div class="card-body mt-3">
             <a href="t_user.php" class="btn btn-primary">Tambah Data </a>
           </div>
@@ -175,7 +175,7 @@ if (!isset($_SESSION['login'])) {
         <div class="col-lg-12">
 
           <div class="card">
-            <div class="card-body">
+            <div class="card-body mt-3">
 
               <!-- Table with stripped rows -->
               <table class="table datatable">
@@ -224,7 +224,6 @@ if (!isset($_SESSION['login'])) {
                     </tr>
                   <?php } ?>
                 </tbody>
-
                 </tbody>
               </table>
               <!-- End Table with stripped rows -->
